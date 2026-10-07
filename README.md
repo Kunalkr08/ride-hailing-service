@@ -104,3 +104,19 @@ End:
 ## AI usage
 
 AI was used for boilerplate generation, DTOs, NestJS module wiring and initial test scaffolding. The generated code was reviewed and simplified around the domain boundaries. Pricing assumptions, upgrade behaviour, radius matching, coupon semantics and the in-memory trade-off were explicitly chosen for this exercise. Tests were written around the mandatory pricing and upgrade requirements rather than relying only on generated code.
+
+## Demo flow
+
+A simple 30-minute demo can be driven entirely through the API:
+
+1. Register one user and two drivers near the pickup point.
+2. Add `SAVE10` coupon.
+3. Book a Hatchback while only a Sedan is available and show `requestedCarType=HATCHBACK` and `assignedCarType=SEDAN`.
+4. End the ride with 10 km and show the calculated fare and coupon discount.
+5. Fetch both user and driver history.
+6. Move all available drivers far away and demonstrate the no-driver case.
+7. Try an invalid coupon and show the request is rejected.
+
+## AI note for the demo
+
+The important point to communicate is not "AI generated the project". Explain that AI accelerated repetitive NestJS boilerplate, while the domain decisions were reviewed manually: progressive tiers, minimum fare, 5 km matching radius, free Sedan upgrade, coupon validation timing, and the in-memory persistence trade-off.
